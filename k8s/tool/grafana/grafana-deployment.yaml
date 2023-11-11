@@ -18,7 +18,7 @@ spec:
       - envFrom:
         - secretRef:
             name: grafana-creds
-        image: docker.io/grafana/grafana:7.3.3
+        image: docker.io/grafana/grafana:latest
         name: grafana
         resources:
           requests:
@@ -37,6 +37,7 @@ spec:
           - name: influxdb-datasource-provisioning
             mountPath: /etc/grafana/provisioning/datasources
       securityContext:
+        runAsUser: 472
         fsGroup: 472
       volumes:
         - name: data-dir
